@@ -5,7 +5,7 @@ const handleGetPatientData = require('../controllers/handleGetPatientData');
 const handlePostPatientData = require('../controllers/handlePostPatientData');
 
 Router.get('/', (req, res) => {
-	res.send("<h1>App running</h1>")
+	res.send("<h1>App running</h1>");
 })
 
 Router.post(

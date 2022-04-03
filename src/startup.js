@@ -19,6 +19,9 @@ const startup = (app) => {
 
 	// -------- ROUTES ---------
 	app.use(Routes);
+	app.use("*", (req, res) => {
+		res.status(404).send("<h1>404 route not found</h1>");
+	})
 }
 
 module.exports = startup;
