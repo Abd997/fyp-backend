@@ -1,15 +1,17 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const dotenv = require('dotenv').config();
 const Routes = require('./routes/Routes');
 const AdminRoute = require('./routes/AdminRoute');
-const mongoose_url = 'mongodb://localhost/practice-database';
+console.log('MONGO Link: ' + process.env.MONGO_URL);
+const mongoose_url = process.env.MONGO_URL;
 
 const startup = (app) => {
 	
 	// -------- DATABASE ---------
 	mongoose.connect(mongoose_url).then(
-		() => { console.log('database connected'); },
-		err => { console.log('error connecting to database'); }
+		() => { console.log('MONGO connected'); },
+		err => { console.log('error connecting to MONGO ' + err); }
 	);
 	
 	// -------- MIDDLEWARES ---------
