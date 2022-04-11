@@ -1,0 +1,20 @@
+[
+    {
+        "type": "Directory",
+        "name": "d:\\fyp\\fyp-backend\\src\\controllers",
+        "parent_id": null,
+        "fsPath": "d:\\fyp\\fyp-backend\\src\\controllers",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "OyJMpcqza9SDVNIC"
+    },
+    {
+        "type": "File",
+        "name": "d:\\fyp\\fyp-backend\\src\\routes\\Routes.js",
+        "parent_id": null,
+        "fsPath": "d:\\fyp\\fyp-backend\\src\\routes\\Routes.js",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "8t3pOLuGlFhUk9x5"
+    }
+]

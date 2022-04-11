@@ -1,31 +1,19 @@
 const axios = require('axios');
 
 (async () => {
-	const res = await axios.post('http://localhost:8000/auth', {
-		cnic: 13,
-		password: '13',
-		type: 'doctor'
-	})
-	
-	console.log('Post request sent');
-	console.log('Data recieved: ' + res.data);
-})()
-// (async () => {
-// 	const res = await axios.post('http://localhost:8000/v1/patientdata', {
-// 		cnic: 13,
-// 		heartRate: 112,
-// 		ecg: 112,
-// 		spo2: 112,
-// 		bloodPressure: 112,
-// 		temperature: 112,
-// 	})
-	
-// 	console.log('Post request sent');
-// 	console.log('Data recieved: ', res.data);
-// })()
-	
-// (async () => {
-// 	await axios.get('http://localhost:8000/v1/patientdata/12')
-	
-// 	console.log('get request sent');
-// })()
+	for (var i = 0; i < 100; i++) {
+		const res = await axios.post('http://localhost:8000/v1/patientdata', {
+			cnic: 13,
+			heartRate: 101 + i,
+			ecg: 201 - i,
+			spo2: 21 + i,
+			spo2: 55 + i,
+			temperature: 200 - i
+		})
+
+		console.log('Request sent');
+		console.log(res.data);
+
+		await new Promise(resolve => setTimeout(resolve, 9000));
+	}
+})();
