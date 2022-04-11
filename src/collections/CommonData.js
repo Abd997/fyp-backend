@@ -1,6 +1,7 @@
 const reqString = {
 	type: String,
-	required: true
+	required: true,
+	default: 'empty'
 }
 
 const CommonData = {
