@@ -15,17 +15,10 @@ const CommonData = {
 	},
 	firstName: reqString,
 	lastName: reqString,
-	email: {
-		type: String,
-	},
-	phone: {
-		type: Number
-	},
+	email: reqString,
+	phone: reqString,
 	gender: reqString,
-	age: {
-		type: Number,
-		required: true
-	},
+	age: reqString,
 	cnic: {
 		type: Number,
 		required: true,
