@@ -14,7 +14,15 @@ const handlePostPatientData = async (req, res) => {
 	}
 	const doc = await PatientCollection.findOne({ cnic: cnic });
 	if (doc === null || doc.length == 0) {
-		return res.send(`Patient with cnic ${cnic} not found`);
+		PatientCollection.create({
+			cnic: cnic,
+			heartRate: heartRate,
+			ecg: ecg,
+			spo2: spo2,
+			bloodPressure: bloodPressure,
+			temperature: temperature
+		})
+		return res.send(`Patient with cnic ${cnic} not found but has been added now`);
 	}
 
 	const result = await PatientCollection.updateOne({ cnic: cnic }, {
