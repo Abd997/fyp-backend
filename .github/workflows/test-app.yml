@@ -13,6 +13,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    
+    env:
+      JWT_SIGN_SECRET: test
 
     strategy:
       matrix:
@@ -26,9 +29,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      env:
-          JWT_SIGN_SECRET: test
+      uses: actions/setup-node@v3    
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
