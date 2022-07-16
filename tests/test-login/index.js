@@ -1,7 +1,9 @@
+const testDoctorLogin = require("./testDoctorLogin");
 const testValidator = require("./testValidator");
 
-module.exports = (data) => {
+module.exports = (patient, doctor) => {
 	describe("test login module", () => {
-		testValidator(data);
+		testValidator(doctor);
+		testDoctorLogin(doctor);
 	});
 };

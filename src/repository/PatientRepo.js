@@ -1,11 +1,8 @@
 const PatientCollection = require("../entities/PatientCollection");
 
 module.exports = {
-	findPatient: async function (email) {
-		const doc = await PatientCollection.findOne({ email: email });
-		if (!doc) {
-			throw new Error("Patient not found");
-		}
+	findPatient: async function (cnic) {
+		const doc = await PatientCollection.findOne({ cnic: cnic });
 		return doc;
 	},
 

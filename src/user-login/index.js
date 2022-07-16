@@ -1,4 +1,4 @@
 module.exports = {
-	loginPatient: require("./loginPatient"),
+	loginDoctor: require("./loginDoctor"),
 	validateReq: require("./validateReq")
 };

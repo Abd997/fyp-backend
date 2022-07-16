@@ -1,14 +1,14 @@
 const supertest = require("supertest");
 const app = require("../../src/app");
 
-module.exports = (data) => {
-	describe("test register patient", () => {
-		const url = "/admin/register/patient";
+module.exports = (doctor) => {
+	describe("test register doctor", () => {
+		const url = "/admin/register/doctor";
 		it("returns code:201 msg:User successfully created", async () => {
 			const res = await supertest(app).post(url).send({
-				cnic: data.cnic,
-				email: data.email,
-				password: data.password
+				cnic: doctor.cnic,
+				email: doctor.email,
+				password: doctor.password
 			});
 			expect(res.statusCode).toBe(201);
 			expect(res.body.msg).toEqual("User successfully created");

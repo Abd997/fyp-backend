@@ -1,7 +1,8 @@
 const e = require("express");
 const sendErrorResponse = require("../utils/sendErrorResponse");
 const jwt = require("jsonwebtoken");
-const PatientRepo = require("../repository/PatientRepo");
+const DoctorRepo = require("../repository/DoctorRepo");
+require("dotenv").config();
 
 /**
  *
@@ -9,18 +10,15 @@ const PatientRepo = require("../repository/PatientRepo");
  * @param {e.Response} res
  */
 module.exports = async (req, res) => {
-	const { email, password } = req.body;
+	const { cnic, password } = req.body;
 	try {
-		const user = await PatientRepo.authenticatePatient(
-			email,
-			password
-		);
+		const user = await DoctorRepo.authenticateDoctor(cnic, password);
 		if (!user) {
 			return sendErrorResponse(res, 401, "User not found");
 		}
-		const token = jwt.sign(email, process.env.JWT_SIGN_SECRET);
+		const token = jwt.sign(cnic, process.env.JWT_SIGN_SECRET);
 		res.status(200).json({
-			msg: "User successfully authenticated",
+			msg: "Doctor successfully authenticated",
 			token: token
 		});
 	} catch (err) {

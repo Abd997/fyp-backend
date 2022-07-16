@@ -1,5 +1,6 @@
 const e = require("express");
 const { body, validationResult } = require("express-validator");
+const PatientRepo = require("../repository/PatientRepo");
 const sendErrorResponse = require("../utils/sendErrorResponse");
 
 /**
@@ -20,8 +21,5 @@ module.exports = [
 	body("cnic")
 		.exists({ checkFalsy: true })
 		.withMessage("Cnic not sent"),
-	body("password")
-		.exists({ checkFalsy: true })
-		.withMessage("Password not sent"),
 	validate
 ];

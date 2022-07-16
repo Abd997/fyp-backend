@@ -3,6 +3,7 @@ const app = express();
 const authRoutes = require("./routes/authRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const userLogin = require("./user-login");
+const patientData = require("./patient-data");
 
 app.use(express.json());
 
@@ -11,9 +12,21 @@ app.use(authRoutes);
 app.use("/admin", adminRoutes);
 
 app.post(
-	"/patient/login",
+	"/doctor/login",
 	userLogin.validateReq,
-	userLogin.loginPatient
+	userLogin.loginDoctor
+);
+
+app.post(
+	"/patient/update",
+	patientData.validateReq,
+	patientData.update
+);
+
+app.post(
+	"/patient/retrieve",
+	patientData.validateReq,
+	patientData.retrieve
 );
 
 app.use("/", (req, res) => {

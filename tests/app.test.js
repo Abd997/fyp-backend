@@ -1,11 +1,23 @@
 const mongoose = require("mongoose");
 const testLogin = require("./test-login");
+const testPatientData = require("./test-patient-data");
 const testRegistration = require("./test-registration");
 
 describe("test backend", () => {
-	const data = {
+	const patient = {
 		cnic: "123",
 		email: "test@gmail.com",
+		password: "password",
+		heartRate: 110,
+		ecg: 680,
+		spo2: 50,
+		bloodPressure: 90,
+		temperature: 110
+	};
+
+	const doctor = {
+		cnic: "124",
+		email: "doctor@gmail.com",
 		password: "password"
 	};
 
@@ -14,16 +26,15 @@ describe("test backend", () => {
 			await mongoose.connect(
 				"mongodb://localhost:27017/database_test"
 			);
-			// console.log("Connected to database");
 			await mongoose.connection.db.dropDatabase();
-			// console.log("New database created");
 		} catch (err) {
 			throw new Error("Could not connect to database");
 		}
 	});
 
-	testRegistration(data);
-	testLogin(data);
+	testRegistration(patient, doctor);
+	testLogin(patient, doctor);
+	testPatientData(patient);
 
 	afterAll(async () => {
 		await mongoose.connection.close();
