@@ -1,4 +1,4 @@
-const DoctorCollection = require('../collections/DoctorCollection');
+const DoctorCollection = require("../entities/DoctorCollection");
 
 const handleAuthentication = async (req, res) => {
 	// console.log('auth route hit');
@@ -7,7 +7,7 @@ const handleAuthentication = async (req, res) => {
 	}
 	const { cnic, password, type } = req.body;
 
-	if (type === 'doctor') {
+	if (type === "doctor") {
 		const doc = await DoctorCollection.findOne({ cnic: cnic });
 		// console.log(doc);
 		if (doc === null || doc.length == 0) {
@@ -17,15 +17,19 @@ const handleAuthentication = async (req, res) => {
 			return res.status(401).send(`Wrong password`);
 		}
 	}
-	res.status(200).send('Login successful');
-}
+	res.status(200).send("Login successful");
+};
 
 const checkValidity = (req) => {
 	const { cnic, password, type } = req.body;
-	if (cnic === undefined || password === undefined || type === undefined) {
+	if (
+		cnic === undefined ||
+		password === undefined ||
+		type === undefined
+	) {
 		return false;
 	}
 	return true;
-}
+};
 
 module.exports = handleAuthentication;
