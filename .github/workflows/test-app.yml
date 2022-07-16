@@ -27,6 +27,8 @@ jobs:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
+      env:
+          JWT_SIGN_SECRET: test
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
