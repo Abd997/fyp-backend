@@ -4,6 +4,7 @@ const authRoutes = require("./routes/authRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const userLogin = require("./user-login");
 const patientData = require("./patient-data");
+const verifyToken = require("./utils/verifyToken");
 
 app.use(express.json());
 
@@ -26,6 +27,7 @@ app.post(
 app.post(
 	"/patient/retrieve",
 	patientData.validateReq,
+	verifyToken,
 	patientData.retrieve
 );
 

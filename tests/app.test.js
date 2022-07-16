@@ -34,7 +34,7 @@ describe("test backend", () => {
 
 	testRegistration(patient, doctor);
 	testLogin(patient, doctor);
-	testPatientData(patient);
+	testPatientData(doctor, patient);
 
 	afterAll(async () => {
 		await mongoose.connection.close();

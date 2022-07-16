@@ -19,5 +19,15 @@ module.exports = (patient) => {
 				"Patient not registered"
 			);
 		});
+
+		it("returns code:401 msg:Token not sent", async () => {
+			const res = await supertest(app)
+				.post("/patient/retrieve")
+				.send({
+					cnic: "321"
+				});
+			expect(res.statusCode).toBe(401);
+			expect(res.body.errors[0].msg).toEqual("Token not sent");
+		});
 	});
 };
